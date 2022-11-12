@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.carousel{
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-buttons{
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carousel-button{
+    height: fit-content;
+}
+
+.carousel-track{
+    display: flex;
+    /* gap: 20px; */
+    transition: 0.3s;
+}
+
+.carousel-item{
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    background-color: #808080;
+    font-size: 200px;
+    color: #606060;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
