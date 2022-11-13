@@ -11,16 +11,23 @@ main{
 
 .flight{
     position: relative;
-    overflow: hidden;
 }
 
 .flight-buttons{
-    inset: 0;
+    top: 50%;
+    left: -50px;
+    right: -50px;
+    transform: translateY(-50%);
     position: absolute;
     z-index: 1;
     display: flex;
+    height: fit-content;
     justify-content: space-between;
     align-items: center;
+}
+
+.flight-view{
+    overflow: hidden;
 }
 
 .flight-track{
@@ -30,10 +37,40 @@ main{
 
 .flight-slide{
     flex: 0 0 100%;
-    background-color: #808080;
+    background-color: #606060;
     font-size: 200px;
     color: #606060;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
+    transform: scale(0.8);
+}
+
+.flight-slide-active{
+    transform: scale(1);
+    background-color: #808080;
+}
+
+.flight-pagination{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    bottom: -20px;
+}
+
+.flight-pagination-dot{
+    width: 10px;
+    height: 10px;
+    background-color: #808080;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.flight-pagination-dot-active{
+    background-color: #404040;
+    transform: scale(1.4);
 }
