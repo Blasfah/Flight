@@ -1,1 +1,1 @@
-let x = new carousel('carousel');
+let x = new flight('carousel');

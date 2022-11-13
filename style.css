@@ -1,36 +1,35 @@
 body{
+    margin: 2rem;
     display: flex;
     justify-content: center;
 }
 
-.carousel{
+main{
+    max-width: 700px;
+    width: 100%;
+}
+
+.flight{
     position: relative;
     overflow: hidden;
 }
 
-.carousel-buttons{
+.flight-buttons{
     inset: 0;
     position: absolute;
     z-index: 1;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.carousel-button{
-    height: fit-content;
-}
-
-.carousel-track{
+.flight-track{
     display: flex;
-    /* gap: 20px; */
     transition: 0.3s;
 }
 
-.carousel-item{
+.flight-slide{
     flex: 0 0 100%;
-    box-sizing: border-box;
     background-color: #808080;
     font-size: 200px;
     color: #606060;
