@@ -27,29 +27,32 @@ function flight(flight_ID){
 
     function setIndex(index){
 
-        //clamping the indexes
+        //clamping the index
         index = clamp(index, 0, flight_slides.length - 1);
-        current_index = index;
 
         //setting classes for the slides
-        flight_slides.forEach(Element =>{
-            if(Element.classList.contains('flight-slide-active')){
-                Element.classList.remove('flight-slide-active');
-            }
-        })
-        flight_slides[index].classList.add('flight-slide-active');
+        setStateClasses(flight_slides, index, 'flight-slide-active', 'flight-slide-ready', 300);
+        setStateClasses(pagination_dots, index, 'flight-pagination-dot-active', 'flight-pagination-dot-ready', 300);
 
-        //setting classes for the dots
-        pagination_dots.forEach(Element =>{
-            if(Element.classList.contains('flight-pagination-dot-active')){
-                Element.classList.remove('flight-pagination-dot-active');
-            }
-        })
-        pagination_dots[index].classList.add('flight-pagination-dot-active');
+        checkAndSetButtons(index);
 
         //setting the track position
-        flight_track.style.transform = `translateX(-${flight_track.offsetWidth * index}px`;
-        return current_index;
+        flight_track.setAttribute('style', `transform: translateX(-${flight_track.offsetWidth * index}px); transition: 300ms;`);
+        setTimeout( () => { if (current_index == index) {flight_track.setAttribute('style', `transform: translateX(-${flight_track.offsetWidth * index}px);`);} }, 300)
+        return current_index = index;
+    }
+
+    function setStateClasses(elements, index, activeStateClass, readyStateClass, transition){
+        elements.forEach(Element =>{
+            if (Element.classList.contains(activeStateClass)) {Element.classList.remove(activeStateClass, readyStateClass)};
+        })
+        elements[index].classList.add(activeStateClass);
+        setTimeout( () => { if (current_index == index) {elements[index].classList.add(readyStateClass)} }, transition);
+    }
+
+    function checkAndSetButtons(index){
+        (index == 0 ? prev_button.disabled = true :  prev_button.disabled = false);
+        (index == flight_slides.length - 1 ? next_button.disabled = true :  next_button.disabled = false);
     }
 
     setIndex(current_index); // initialize the first slide
